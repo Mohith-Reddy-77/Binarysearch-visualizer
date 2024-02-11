@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Binary Search Visualizer</h1>
+        <form action="/search" method="post">
+            <div>
+                <label for="array">Enter array (comma-separated):</label>
+                <input type="text" id="array" name="array" placeholder="e.g., 1, 3, 5, 7, 9" required>
+            </div>
+            <div>
+                <label for="target">Enter target value:</label>
+                <input type="number" id="target" name="target" required>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        <div id="visualization">
+            <h2>Binary search</h2>
+            {% if data %}
+            <p>Array: {{ data.array }}</p>
+            <p>Target value: {{ data.target }}</p>
+                {% if data.mid!=-1 %}
+                <p>Element found at index {{data.mid}}</p>
+                {% else %}
+                <p> Element not found</p>
+                {% endif %}
+            <b>Iterations:</b><br>
+                {% for step in range(data.len) %}
+                    <b>Iteration {{step+1}}</b><br>
+                    Midpoint: {{ data.array[data.indexlist[step]] }}
+                    <br>
+                    {% if data.newarray[step+1] %}
+                    Remaining array: {{ data.newarray[step+1] }}
+                    {% endif %}
+                    <br>
+                    <br>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
