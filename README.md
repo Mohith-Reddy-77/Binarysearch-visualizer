@@ -4,7 +4,7 @@ This project implements a Binary Search Visualizer using Flask, HTML, CSS, and J
 
 ## Features
 
-- Input an array of integers (comma-separated) and a target value.
+- Input an array of integers (comma-separated in ascending order) and a target value.
 - Perform binary search on the array.
 - Visualize each step of the binary search process.
 - Display the index of the target value if found, along with the iterations and the remaining array at each step.
